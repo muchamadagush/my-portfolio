@@ -16,7 +16,7 @@ const Projects = () => {
             <div className='hidden group-hover:block absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>
               <h3 className='text-2xl text-white tracking-wider text-center'>Property Finder</h3>
               <p className='pb-4 pt-2 text-white text-center'>Next JS</p>
-              <Link href={'/'}>
+              <Link href={'/project4'}>
                 <p className='text-center py-3 rounded-lg bg-white text-gray-700 font-bold text-lg cursor-pointer'>More Info</p>
               </Link>
             </div>
@@ -26,7 +26,7 @@ const Projects = () => {
             <div className='hidden group-hover:block absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>
               <h3 className='text-2xl text-white tracking-wider text-center'>Property Finder</h3>
               <p className='pb-4 pt-2 text-white text-center'>Next JS</p>
-              <Link href={'/'}>
+              <Link href={'/project3'}>
                 <p className='text-center py-3 rounded-lg bg-white text-gray-700 font-bold text-lg cursor-pointer'>More Info</p>
               </Link>
             </div>
@@ -36,7 +36,7 @@ const Projects = () => {
             <div className='hidden group-hover:block absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>
               <h3 className='text-2xl text-white tracking-wider text-center'>Property Finder</h3>
               <p className='pb-4 pt-2 text-white text-center'>Next JS</p>
-              <Link href={'/'}>
+              <Link href={'/project2'}>
                 <p className='text-center py-3 rounded-lg bg-white text-gray-700 font-bold text-lg cursor-pointer'>More Info</p>
               </Link>
             </div>
@@ -46,7 +46,7 @@ const Projects = () => {
             <div className='hidden group-hover:block absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>
               <h3 className='text-2xl text-white tracking-wider text-center'>Property Finder</h3>
               <p className='pb-4 pt-2 text-white text-center'>Next JS</p>
-              <Link href={'/'}>
+              <Link href={'/project1'}>
                 <p className='text-center py-3 rounded-lg bg-white text-gray-700 font-bold text-lg cursor-pointer'>More Info</p>
               </Link>
             </div>
