@@ -8,7 +8,7 @@ import { BsFillPersonLinesFill } from 'react-icons/bs'
 const Navbar = () => {
   const [nav, setNav] = useState(false)
 
-  const handleNav = (status) => {
+  const handleNav = (status: boolean) => {
     setNav(status)
   }
 
