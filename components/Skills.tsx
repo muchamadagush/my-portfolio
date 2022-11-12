@@ -17,6 +17,7 @@ import Git from "../public/assets/logo/git.png";
 import Github from "../public/assets/logo/github.png";
 import Gitlab from "../public/assets/logo/gitlab.png";
 import SocketIO from "../public/assets/logo/socketio.png";
+import Tailwind from "../public/assets/logo/tailwindcss.png";
 
 const Skills = () => {
   const dataSkills: any = [
@@ -87,6 +88,10 @@ const Skills = () => {
     {
       logo: SocketIO,
       title: "Socket.IO",
+    },
+    {
+      logo: Tailwind,
+      title: "Tailwind CSS",
     },
   ];
 
