@@ -14,13 +14,17 @@ const Navbar = () => {
 
   const router = useRouter()
 
+  console.log('router.asPath', router.asPath)
+  console.log('router.asPath', !router.asPath.includes('#'))
+  console.log('router.asPath', router.asPath.includes('projects'))
+
   useEffect(() => {
-    if (router.route === '/') {
-      setNavBg('#ecf0f3')
-      setLinkColor('#1f2937')
-    } else {
+    if (!router.asPath.includes('#') && router.asPath.includes('projects')) {
       setNavBg('transparent')
       setLinkColor('#ecf0f3')
+    } else {
+      setNavBg('#ecf0f3')
+      setLinkColor('#1f2937')
     }
   }, [router])
   

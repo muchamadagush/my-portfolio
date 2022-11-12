@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import Image from 'next/image'
 import React from 'react'
-import propertyImg from '../public/assets/Agus.png'
+import propertyImg from '../../public/assets/Agus.png'
 import { RiRadioButtonFill } from 'react-icons/ri'
 import Link from 'next/link'
 import { AiOutlineLeft } from 'react-icons/ai';
