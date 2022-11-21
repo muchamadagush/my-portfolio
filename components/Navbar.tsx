@@ -49,7 +49,7 @@ const Navbar = () => {
           : "fixed w-full h-20 z-[100]"
       }
     >
-      <div className="flex justify-between items-center w-full h-full px-2 2xl:px-16">
+      <div className="flex justify-between items-center w-full h-full px-2 2xl:px-0 max-w-[1240px] mx-auto">
         <Link href={"/"}>
           <Image src={logoImg} alt="/" width={125} height={50} />
         </Link>

@@ -1,17 +1,14 @@
+/* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import useProject from "../data/useProject";
 import Portfolio from "../public/assets/projects/web-portfolio.png";
 
 const Projects = () => {
-  const dataProjects = [
-    {
-      thumbnail: Portfolio,
-      title: "Web Portfolio",
-      mainTechnology: "Next JS",
-      slug: "web-portfolio"
-    },
-  ];
+  const queryProjects = useProject()
+
+  const { data: dataProjects } = queryProjects
 
   return (
     <div id="projects" className="w-full">
@@ -27,9 +24,9 @@ const Projects = () => {
                 key={index}
                 className="relative flex items-center justify-center h-auto w-full shadow-xl shadow-gray-400 rounded-xl p-4 group hover:bg-gradient-to-r from-[#5651e5] to-[#709dff]"
               >
-                <Image
-                  className="rounded-xl group-hover:opacity-10"
-                  src={Portfolio}
+                <img
+                  className="rounded-xl group-hover:opacity-10 w-full object-cover"
+                  src={item.thumbnailImg.url}
                   alt={"/"}
                 />
                 <div className="hidden group-hover:block absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
