@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const login = () => {
+const Login = () => {
   const [dataLogin, setdataLogin] = useState({
     username: "",
     password: "",
@@ -62,4 +62,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;
