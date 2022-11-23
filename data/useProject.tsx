@@ -21,17 +21,17 @@ export interface UseProjectData {
   deletedAt: string
 }
 
-export interface UseCourseResult {
+export interface UseProjectResult {
   data: UseProjectData
   count: number
 }
 
 function useProject(
   urlOptions?: UseUrlQueryOptions,
-  options?: UseQueryOptions<UseCourseResult[]>,
+  options?: UseQueryOptions<UseProjectResult[]>,
 ) {
   const urlQuery = useUrlQuery(urlOptions)
-  const query = useQuery<UseCourseResult[], AxiosError>(
+  const query = useQuery<UseProjectResult[], any>(
     urlQuery.transformKey('/get-all-project'),
     () =>
       ApiCall.api.get(

@@ -14,7 +14,7 @@ function useProjectBySlug(
   options?: UseQueryOptions<UseProjectResult>,
 ) {
   const urlQuery = useUrlQuery(urlOptions)
-  const query = useQuery<UseProjectResult, AxiosError>(
+  const query = useQuery<UseProjectResult, any>(
     urlQuery.transformKey(['/get-project-by-slug', slug]),
     () =>
       ApiCall.api.get(
