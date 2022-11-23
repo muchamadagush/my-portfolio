@@ -9,6 +9,15 @@ const mapApiUrl = {
   production: `${URL_API_PRODUCTION}/v1`,
 }
 
+const mapDomain = {
+  'www.iamagus.com': {
+    api: 'api.iamagus.com',
+  },
+  'iamagus.com': {
+    api: 'api.iamagus.com',
+  }
+}
+
 if (typeof window !== 'undefined') {
   const host = window.location.host
   const xHost = window.location.host.split(':')
