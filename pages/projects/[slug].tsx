@@ -1,12 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/rules-of-hooks */
-import Image from 'next/image'
 import React from 'react'
 import { RiRadioButtonFill } from 'react-icons/ri'
 import Link from 'next/link'
 import { AiOutlineLeft } from 'react-icons/ai';
 import { useRouter } from 'next/router'
 import useProjectBySlug from '../../data/useProjectBySlug'
+const URL_API_PRODUCTION = process.env.URL_API_PRODUCTION
 
 const property = () => {
   const { query } = useRouter()
@@ -18,11 +18,11 @@ const property = () => {
   return (
     <div className='w-full'>
       <div className='w-screen h-[30vh] lg:h-[40vh] relative'>
-        <img className='absolute z-1 object-cover w-full h-full' src={dataProject?.thumbnailImg?.url} alt={'/'} />
+        <img className='absolute z-1 object-cover w-full h-full' src={URL_API_PRODUCTION + dataProject?.thumbnailImg?.path} alt={'/'} />
         <div className='absolute top-0 left-0 w-full h-[30vh] lg:h-[40vh] bg-black/80 z-10'>
           <div className='absolute top-[70%] max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] text-white z-10'>
             <h2 className='py-2'>{dataProject?.title}</h2>
-            <h3 className='py-4'>React JS / Tailwind</h3>
+            <h3 className='py-4'>{ dataProject?.mainTechnology }</h3>
           </div>
         </div>
       </div>

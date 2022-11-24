@@ -1,9 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import useProject from "../data/useProject";
-import Portfolio from "../public/assets/projects/web-portfolio.png";
+const URL_API_PRODUCTION = process.env.URL_API_PRODUCTION
 
 const Projects = () => {
   const queryProjects = useProject()
@@ -26,7 +25,7 @@ const Projects = () => {
               >
                 <img
                   className="rounded-xl group-hover:opacity-10 w-full object-cover"
-                  src={item.thumbnailImg.url}
+                  src={URL_API_PRODUCTION + item.thumbnailImg.path}
                   alt={"/"}
                 />
                 <div className="hidden group-hover:block absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
