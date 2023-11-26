@@ -1,8 +1,10 @@
-import React from "react";
-import { AiFillInstagram } from "react-icons/ai";
-import { FaLinkedinIn, FaGithub } from "react-icons/fa";
-import { BsFillPersonLinesFill } from "react-icons/bs";
-import Link from "next/link";
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+import React from 'react'
+import { AiFillInstagram } from 'react-icons/ai'
+import { FaLinkedinIn, FaGithub } from 'react-icons/fa'
+import { BsFillPersonLinesFill } from 'react-icons/bs'
+import Link from 'next/link'
+
 const Main = () => {
   return (
     <div id="home" className="w-full h-screen text-center">
@@ -25,7 +27,7 @@ const Main = () => {
             <div
               onClick={() =>
                 window.open(
-                  "https://www.linkedin.com/in/muchamad-agus-hermawan/"
+                  'https://www.linkedin.com/in/muchamad-agus-hermawan/'
                 )
               }
               className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300"
@@ -33,7 +35,7 @@ const Main = () => {
               <FaLinkedinIn />
             </div>
             <div
-              onClick={() => window.open("https://github.com/muchamadagush/")}
+              onClick={() => window.open('https://github.com/muchamadagush/')}
               className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300"
             >
               <FaGithub />
@@ -41,14 +43,14 @@ const Main = () => {
             <div
               onClick={() =>
                 window.open(
-                  "https://www.instagram.com/muchamadagushermawan/"
+                  'https://www.instagram.com/muchamadagushermawan/'
                 )
               }
               className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300"
             >
               <AiFillInstagram />
             </div>
-            <Link href={`/#contact`}>
+            <Link href={'/#contact'}>
               <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
                 <BsFillPersonLinesFill />
               </div>
@@ -57,7 +59,7 @@ const Main = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Main;
+export default Main

@@ -1,7 +1,9 @@
-/* eslint-disable @next/next/no-img-element */
-import Link from "next/link";
-import React from "react";
-import useProject from "../data/useProject";
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
+/* eslint-disable @typescript-eslint/prefer-optional-chain */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+import Link from 'next/link'
+import React from 'react'
+import useProject from '../data/useProject'
 const URL_API_PRODUCTION = process.env.URL_API_PRODUCTION
 
 const Projects = () => {
@@ -26,7 +28,7 @@ const Projects = () => {
                 <img
                   className="rounded-xl group-hover:opacity-10 w-full object-cover"
                   src={URL_API_PRODUCTION + item.thumbnailImg.path}
-                  alt={"/"}
+                  alt={'/'}
                 />
                 <div className="hidden group-hover:block absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
                   <h3 className="text-2xl text-white tracking-wider text-center">
@@ -44,7 +46,7 @@ const Projects = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Projects;
+export default Projects

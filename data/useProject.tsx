@@ -1,9 +1,9 @@
-import { useQuery, UseQueryOptions } from 'react-query'
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+import { useQuery, type UseQueryOptions } from 'react-query'
 import ApiCall from '../services/ApiCall'
-import useUrlQuery, { UseUrlQueryOptions } from '../helpers/QueryUrl/useUrlQuery'
+import useUrlQuery, { type UseUrlQueryOptions } from '../helpers/QueryUrl/useUrlQuery'
 import { BASE_API_URL } from '../constant'
 import { get } from 'lodash'
-import { AxiosError } from 'axios'
 
 export interface UseProjectData {
   id: string
@@ -26,16 +26,16 @@ export interface UseProjectResult {
   count: number
 }
 
-function useProject(
+function useProject (
   urlOptions?: UseUrlQueryOptions,
-  options?: UseQueryOptions<UseProjectResult[]>,
+  options?: UseQueryOptions<UseProjectResult[]>
 ) {
   const urlQuery = useUrlQuery(urlOptions)
   const query = useQuery<UseProjectResult[], any>(
     urlQuery.transformKey('/get-all-project'),
-    () =>
-      ApiCall.api.get(
-        urlQuery.transformUrl(`${BASE_API_URL}/project?`),
+    async () =>
+      await ApiCall.api.get(
+        urlQuery.transformUrl(`${BASE_API_URL}/project?`)
       ),
     {
       // refetchInterval: 1000 * 60 * 1, // 1 minute
@@ -44,8 +44,8 @@ function useProject(
       refetchOnWindowFocus: false,
       select: (res: any) => res?.data,
       keepPreviousData: true,
-      ...options,
-    },
+      ...options
+    }
   )
 
   const data = get(query, 'data.data', [])
@@ -55,7 +55,7 @@ function useProject(
     ...query,
     data,
     count,
-    helper: urlQuery,
+    helper: urlQuery
   }
 }
 

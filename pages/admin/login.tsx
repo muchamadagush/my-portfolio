@@ -1,31 +1,32 @@
-import React, { useState } from "react";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+import React, { useState } from 'react'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const Login = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [dataLogin, setdataLogin] = useState({
-    username: "",
-    password: "",
-  });
+    username: '',
+    password: ''
+  })
 
   const handleLogin = () => {
-    const { username, password } = dataLogin;
+    const { username, password } = dataLogin
 
     if (!username || !password) {
-      toast.error("username/password is required!", {
-        position: "top-right",
+      toast.error('username/password is required!', {
+        position: 'top-right',
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "light",
-        });
+        theme: 'light'
+      })
     }
-
-
-  };
+  }
 
   return (
     <div className="h-[100vh] w-[100vw] flex justify-center items-center">
@@ -59,7 +60,7 @@ const Login = () => {
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
