@@ -8,17 +8,33 @@ export default async function handler (
   req: NextApiRequest,
   res: NextApiResponse<ApiResponse<Project | Project[]>>
 ): Promise<void> {
+  // Add CORS headers for Vercel
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+
+  if (req.method === 'OPTIONS') {
+    res.status(200).end()
+    return
+  }
+
   try {
+    console.log('Attempting to connect to MongoDB...')
     const db = await getDatabase()
+    console.log('Connected to MongoDB successfully')
+
     const collection: Collection<Project> = db.collection('projects')
 
     switch (req.method) {
       case 'GET': {
+        console.log('Fetching projects...')
         const projects = await collection
           .find({})
           .sort({ createdAt: -1 })
+          .limit(50) // Add limit to prevent large queries
           .toArray()
 
+        console.log(`Found ${projects.length} projects`)
         res.status(200).json({ success: true, data: projects })
         break
       }
@@ -55,7 +71,8 @@ export default async function handler (
         })
     }
   } catch (error) {
+    console.error('API Error:', error)
     const message = error instanceof Error ? error.message : 'Unknown error occurred'
-    res.status(400).json({ success: false, message })
+    res.status(500).json({ success: false, message: `Server error: ${message}` })
   }
 }

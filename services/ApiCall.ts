@@ -19,6 +19,9 @@ class BaseApiCall {
   constructor() {
     // Use Next.js API routes instead of external API
     this.api = Fetcher.createAuthAxios("/api", "token-user")
+    
+    // Add timeout for Vercel deployment
+    this.api.defaults.timeout = 30000 // 30 seconds timeout
   }
 
   Project = {
