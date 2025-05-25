@@ -1,40 +1,41 @@
 /* eslint-disable no-param-reassign */
 import Fetcher from "./Fetcher"
 import { AxiosInstance } from "axios"
-import { BASE_API_URL } from "../constant"
 
 export interface IProjectPost {
   title: string
   description: string
-  fileId: string
-  mainTechnology: string
   technologies: string[]
-  demoLink: string
-  repoLink: string
+  imageUrl?: string
+  demoUrl?: string
+  githubUrl?: string
+  status?: 'completed' | 'in-progress' | 'planning'
+  featured?: boolean
 }
 
 class BaseApiCall {
   public api: AxiosInstance
 
   constructor() {
-    this.api = Fetcher.createAuthAxios(BASE_API_URL, "token-user")
+    // Use Next.js API routes instead of external API
+    this.api = Fetcher.createAuthAxios("/api", "token-user")
   }
 
   Project = {
     create: (data: IProjectPost) => {
-      return this.api.post(`/project`, data)
+      return this.api.post(`/projects`, data)
     },
     getAll: () => {
-      return this.api.get(`/project`)
+      return this.api.get(`/projects`)
     },
     getById: (id: string) => {
-      return this.api.get(`/project/${id}`)
+      return this.api.get(`/projects/${id}`)
     },
-    getBySlug: (slug: string) => {
-      return this.api.get(`/project/${slug}`)
+    update: (id: string, data: Partial<IProjectPost>) => {
+      return this.api.put(`/projects/${id}`, data)
     },
     delete: (id: string) => {
-      return this.api.delete(`/project/${id}`)
+      return this.api.delete(`/projects/${id}`)
     },
   }
 

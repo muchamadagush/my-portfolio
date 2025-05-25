@@ -1,61 +1,52 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { useQuery, type UseQueryOptions } from 'react-query'
 import ApiCall from '../services/ApiCall'
-import useUrlQuery, { type UseUrlQueryOptions } from '../helpers/QueryUrl/useUrlQuery'
-import { BASE_API_URL } from '../constant'
 import { get } from 'lodash'
 
 export interface UseProjectData {
-  id: string
+  _id: string
   title: string
   description: string
-  slug: string
-  mainTechnology: string
-  demoLink: boolean
-  repoLink: boolean
-  technologies: string
-  fileId: number
-  thumbnailImg: any
+  technologies: string[]
+  imageUrl?: string
+  demoUrl?: string
+  githubUrl?: string
+  status: 'completed' | 'in-progress' | 'planning'
+  featured: boolean
   createdAt: string
   updatedAt: string
-  deletedAt: string
 }
 
 export interface UseProjectResult {
-  data: UseProjectData
-  count: number
+  success: boolean
+  data: UseProjectData[]
 }
 
 function useProject (
-  urlOptions?: UseUrlQueryOptions,
-  options?: UseQueryOptions<UseProjectResult[]>
+  options?: UseQueryOptions<UseProjectResult>
 ) {
-  const urlQuery = useUrlQuery(urlOptions)
-  const query = useQuery<UseProjectResult[], any>(
-    urlQuery.transformKey('/get-all-project'),
-    async () =>
-      await ApiCall.api.get(
-        urlQuery.transformUrl(`${BASE_API_URL}/project?`)
-      ),
+  const query = useQuery<UseProjectResult, any>(
+    ['projects'],
+    async () => {
+      const response = await ApiCall.Project.getAll()
+      return response.data
+    },
     {
-      // refetchInterval: 1000 * 60 * 1, // 1 minute
       refetchInterval: false,
-      refetchOnMount: false,
+      refetchOnMount: true,
       refetchOnWindowFocus: false,
-      select: (res: any) => res?.data,
       keepPreviousData: true,
       ...options
     }
   )
 
   const data = get(query, 'data.data', [])
-  const count = get(query, 'data.count', 0)
+  const success = get(query, 'data.success', false)
 
   return {
     ...query,
     data,
-    count,
-    helper: urlQuery
+    success
   }
 }
 
