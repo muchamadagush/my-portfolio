@@ -2,7 +2,7 @@
 import React from 'react'
 import { AiFillInstagram } from 'react-icons/ai'
 import { FaLinkedinIn, FaGithub } from 'react-icons/fa'
-import { BsFillPersonLinesFill } from 'react-icons/bs'
+import { BsWhatsapp } from 'react-icons/bs'
 import Link from 'next/link'
 
 const Main = () => {
@@ -47,9 +47,9 @@ const Main = () => {
             >
               <AiFillInstagram />
             </div>
-            <Link href={'/#contact'}>
+            <Link href={'https://wa.me/6282131571915'} passHref>
               <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
-                <BsFillPersonLinesFill />
+                <BsWhatsapp />
               </div>
             </Link>
           </div>
