@@ -6,17 +6,20 @@ declare global {
   var _mongoClientPromise: Promise<MongoClient> | undefined
 }
 
-const uri = process.env.MONGODB_URI as string
+// Fix the MongoDB connection string
+// Make sure you have a valid MongoDB connection URL
+// For MongoDB Atlas: mongodb+srv://<username>:<password>@<cluster-url>/<dbname>?retryWrites=true&w=majority
+// For local MongoDB: mongodb://localhost:27017/<dbname>
+const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/portfolio'
 
 if (uri === '' || uri === undefined) {
   throw new Error('Please add your MongoDB URI to .env.local')
 }
 
-// MongoDB connection options
+// Simplify connection options to avoid errors
 const options = {
-  serverSelectionTimeoutMS: 5000, // Keep trying to send operations for 5 seconds
-  socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
-  maxPoolSize: 10 // Maintain up to 10 socket connections
+  connectTimeoutMS: 10000, // 10 seconds
+  socketTimeoutMS: 45000   // 45 seconds
 }
 
 let client: MongoClient
@@ -38,7 +41,9 @@ export default clientPromise
 export async function getDatabase (): Promise<Db> {
   try {
     const client = await clientPromise
-    return client.db('portfolio')
+    // Extract database name from the URI or use default
+    const dbName = uri.split('/').pop()?.split('?')[0] || 'portfolio'
+    return client.db(dbName)
   } catch (error) {
     console.error('MongoDB connection error:', error)
     throw new Error('Failed to connect to MongoDB')

@@ -50,15 +50,15 @@ class BaseApiCall {
             (progressEvent.loaded * 100) / progressEvent.total
           )
 
-          setProgress(percentCompleted)
+          if (setProgress) {
+            setProgress(percentCompleted)
+          }
         },
       }
 
       const { dokumen } = data
-
       const formData = new FormData()
-
-      formData.append("dokumen", dokumen)
+      formData.append("file", dokumen) // Changed from "dokumen" to "file"
 
       return this.api.post("/upload", formData, config)
     },
