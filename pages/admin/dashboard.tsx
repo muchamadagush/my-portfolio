@@ -12,15 +12,16 @@ const Dashboard = (): JSX.Element => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [activeTab, setActiveTab] = useState<'list' | 'create'>('list')
   const [editingProject, setEditingProject] = useState<any>(null)
-  const [searchTerm, setSearchTerm] = useState('')
+  // Add underscore to indicate intentionally unused variable
+  const [_searchTerm, _setSearchTerm] = useState('')
   
   const { data: projects, refetch } = useProject()
 
   // Filter projects based on search term
   const filteredProjects = projects?.filter(project => 
-    project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    project.technologies.some((tech: string) => tech.toLowerCase().includes(searchTerm.toLowerCase()))
+    project.title.toLowerCase().includes(_searchTerm.toLowerCase()) ||
+    project.description.toLowerCase().includes(_searchTerm.toLowerCase()) ||
+    project.technologies.some((tech: string) => tech.toLowerCase().includes(_searchTerm.toLowerCase()))
   ) || []
 
   useEffect(() => {

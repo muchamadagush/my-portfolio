@@ -142,14 +142,18 @@ const ProjectList: React.FC<ProjectListProps> = ({ projects, onEdit, onDelete })
                       </a>
                     )}
                     <button
-                      onClick={() => onEdit(project)}
-                      className="text-[#5651e5] hover:text-[#4c46d1] font-semibold"
+                      onClick={() => {
+                        onEdit(project);
+                      }}
+                      className="text-[#5651e5] hover:text-[#4a45c2] mr-4"
                     >
                       Edit
                     </button>
                     <button
-                      onClick={() => onDelete(project._id)}
-                      className="text-red-600 hover:text-red-800 font-semibold"
+                      onClick={() => {
+                        onDelete(project._id);
+                      }}
+                      className="text-red-600 hover:text-red-800"
                     >
                       Delete
                     </button>

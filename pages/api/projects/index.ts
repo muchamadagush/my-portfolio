@@ -5,7 +5,6 @@ import { validateProject } from '../../../types/project'
 import type { Collection } from 'mongodb'
 import formidable from 'formidable'
 import { v2 as cloudinary } from 'cloudinary'
-import { UploadApiResponse } from 'cloudinary'
 
 // Configure Cloudinary
 cloudinary.config({
