@@ -18,10 +18,7 @@ const Main = () => {
           </h1>
           <h1 className="py-4 text-gray-700">A Fullstack Web Developer</h1>
           <p className="py-4 text-gray-600 max-w-[70%] m-auto">
-            I&apos;m a fullstack web developer specializing in building (and
-            occasionally designing) exceptional digital experiences. Currently,
-            I&apos;m focused on building and developing backend rest api
-            applications while learning any technologies.
+            As a Fullstack Web Developer, I am passionate about designing and building intuitive and high-performing digital experiences. Currently, I am delving into backend development, specifically robust and scalable REST API applications, while continuously expanding the spectrum of technologies I master to deliver innovative solutions.
           </p>
           <div className="flex items-center justify-between max-w-[330px] m-auto py-4">
             <div
