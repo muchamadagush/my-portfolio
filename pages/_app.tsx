@@ -2,6 +2,7 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 import { ToastContainer } from 'react-toastify'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import React from 'react'
@@ -33,6 +34,7 @@ export default function App ({ Component, pageProps }: AppProps) {
           theme="light"
         />
         <Component {...pageProps} />
+        <Footer />
       </QueryClientProvider>
     </React.Fragment>
   )

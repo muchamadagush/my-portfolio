@@ -81,6 +81,11 @@ const Navbar = () => {
                 Insight
               </li>
             </Link>
+            <Link href={'/faq'}>
+              <li className="ml-10 text-sm uppercase hover:border-b hover:mb-[-1px]">
+                FAQ
+              </li>
+            </Link>
           </ul>
           <div onClick={() => { handleNav(true) }} className="md:hidden">
             <AiOutlineMenu size={25} />
@@ -132,6 +137,12 @@ const Navbar = () => {
               </Link>
               <Link href={'/#contact'} onClick={() => { handleNav(false) }}>
                 <li className="py-4 text-sm">Contact</li>
+              </Link>
+              <Link href={'/faq'} onClick={() => { handleNav(false) }}>
+                <li className="py-4 text-sm">FAQ</li>
+              </Link>
+              <Link href={'/privacy-policy'} onClick={() => { handleNav(false) }}>
+                <li className="py-4 text-sm">Privacy Policy</li>
               </Link>
             </ul>
             <div className="pt-40">
