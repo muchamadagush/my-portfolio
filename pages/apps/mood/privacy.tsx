@@ -21,7 +21,7 @@ const MoodJournalPrivacyPolicy = () => {
               Privacy Policy - Mood Journal
             </h2>
             <p className="py-2 text-gray-600">
-              Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+              Last updated: April 17, 2026
             </p>
           </div>
 
@@ -69,16 +69,38 @@ const MoodJournalPrivacyPolicy = () => {
 
             <section>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                4. Data Security
+                4. Data Retention and Deletion
+              </h3>
+              <div className="space-y-3 leading-relaxed">
+                <p>
+                  <strong>Data Retention:</strong> We retain your personal data for as long as you use the application. All your journal entries and moods are stored locally on your device&apos;s internal storage. We do not store any of your personal journal data on our servers.
+                </p>
+                <p>
+                  <strong>Data Deletion:</strong> You have full control over your data and can delete it at any time by:
+                </p>
+                <ul className="list-disc list-inside space-y-2 ml-4">
+                  <li>Manually deleting individual entries within the application.</li>
+                  <li>Clearing the application data through your device&apos;s system settings.</li>
+                  <li>Uninstalling the application from your device, which will permanently remove all stored data.</li>
+                </ul>
+                <p className="mt-4">
+                  <strong>Requesting Data Deletion:</strong> Since we do not have access to your data and it is not transmitted to our servers, we do not have the ability to delete your data on your behalf. However, if you have any questions about how to manage or delete your data, please contact us at the email address provided in Section 9.
+                </p>
+              </div>
+            </section>
+
+            <section>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                5. Data Security
               </h3>
               <p className="leading-relaxed">
-                We prioritize the security of your data. Since all information is stored locally on your device, security depends on your device's protection measures. We recommend using device-level security features like passcodes, biometric authentication, and regular backups.
+                We prioritize the security of your data. Since all information is stored locally on your device, security depends on your device&apos;s protection measures. We recommend using device-level security features like passcodes, biometric authentication, and regular backups.
               </p>
             </section>
 
             <section>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                5. Third-Party Services
+                6. Third-Party Services
               </h3>
               <p className="leading-relaxed">
                 The Mood Journal app does not integrate with any third-party services or collect data for advertising purposes.
@@ -87,7 +109,7 @@ const MoodJournalPrivacyPolicy = () => {
 
             <section>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                6. Children's Privacy
+                7. Children&apos;s Privacy
               </h3>
               <p className="leading-relaxed">
                 The Mood Journal app is not intended for children under 13. We do not knowingly collect personal information from children under 13.
@@ -96,7 +118,7 @@ const MoodJournalPrivacyPolicy = () => {
 
             <section>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                7. Changes to This Privacy Policy
+                8. Changes to This Privacy Policy
               </h3>
               <p className="leading-relaxed">
                 We may update this Privacy Policy from time to time. Any changes will be reflected in the "Last updated" date at the top of this policy.
@@ -105,7 +127,7 @@ const MoodJournalPrivacyPolicy = () => {
 
             <section>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                8. Contact Us
+                9. Contact Us
               </h3>
               <p className="leading-relaxed">
                 If you have any questions about this Privacy Policy, please contact us at:
