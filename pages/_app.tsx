@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { ToastContainer } from 'react-toastify'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { Analytics } from '@vercel/analytics/react'
 import React from 'react'
 
 export const queryClient = new QueryClient({
@@ -35,6 +36,7 @@ export default function App ({ Component, pageProps }: AppProps) {
         />
         <Component {...pageProps} />
         <Footer />
+        <Analytics />
       </QueryClientProvider>
     </React.Fragment>
   )
