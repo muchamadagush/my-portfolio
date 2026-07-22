@@ -4,7 +4,8 @@ import ApiCall from '../services/ApiCall'
 import { get } from 'lodash'
 
 export interface UseProjectData {
-  _id: string
+  id: string
+  _id?: string
   title: string
   description: string
   technologies: string[]
@@ -40,7 +41,13 @@ function useProject (
     }
   )
 
-  const data = get(query, 'data.data', [])
+  const rawData = get(query, 'data.data', [])
+  // Ensure each project item has _id set to id for compatibility
+  const data = rawData.map((item: any) => ({
+    ...item,
+    _id: item._id || item.id
+  }))
+
   const success = get(query, 'data.success', false)
 
   return {

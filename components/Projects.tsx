@@ -28,6 +28,7 @@ const Projects = (): JSX.Element => {
             Projects
           </p>
           <h2 className="py-4">Error loading projects</h2>
+          <p className="text-sm text-gray-500">Please check your Supabase credentials in .env.local file.</p>
         </div>
       </div>
     )
@@ -40,11 +41,16 @@ const Projects = (): JSX.Element => {
           Projects
         </p>
         <h2 className="py-4">What I&apos;ve Built</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {!isEmpty(dataProjects) &&
-            dataProjects.map((item: any, index: number) => (
+        
+        {isEmpty(dataProjects) ? (
+          <div className="bg-gray-50 rounded-xl p-8 text-center border border-gray-200">
+            <h3 className="text-lg font-medium text-gray-700">No projects displayed yet</h3>
+          </div>
+        ) : (
+          <div className="grid md:grid-cols-3 gap-8">
+            {dataProjects.map((item: any, index: number) => (
               <div
-                key={item._id ?? index}
+                key={item.id ?? item._id ?? index}
                 className="relative flex items-center justify-center h-auto w-full shadow-xl shadow-gray-400 rounded-xl p-4 group hover:bg-gradient-to-r from-[#5651e5] to-[#709dff]"
               >
                 <img
@@ -52,12 +58,12 @@ const Projects = (): JSX.Element => {
                   src={item.imageUrl ?? 'https://via.placeholder.com/600x400?text=Project+Image'}
                   alt={item.title ?? 'Project'}
                 />
-                <div className="hidden group-hover:block absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-                  <h3 className="text-2xl text-white tracking-wider text-center">
+                <div className="hidden group-hover:block absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full px-4 text-center">
+                  <h3 className="text-2xl text-white tracking-wider text-center font-bold">
                     {item.title}
                   </h3>
-                  <p className="pb-4 pt-2 text-white text-center">
-                    {item.technologies?.join(', ') ?? 'Technologies'}
+                  <p className="pb-4 pt-2 text-white text-center text-sm">
+                    {Array.isArray(item.technologies) ? item.technologies.join(', ') : (item.technologies ?? '')}
                   </p>
                   <div className="flex gap-2 justify-center">
                     {(item.demoUrl != null && item.demoUrl !== '') && (
@@ -65,7 +71,7 @@ const Projects = (): JSX.Element => {
                         href={item.demoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-center py-2 px-4 rounded-lg bg-white text-gray-700 font-bold text-sm cursor-pointer"
+                        className="text-center py-2 px-4 rounded-lg bg-white text-gray-700 font-bold text-sm cursor-pointer hover:bg-gray-100"
                       >
                         Demo
                       </a>
@@ -75,7 +81,7 @@ const Projects = (): JSX.Element => {
                         href={item.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-center py-2 px-4 rounded-lg bg-white text-gray-700 font-bold text-sm cursor-pointer"
+                        className="text-center py-2 px-4 rounded-lg bg-white text-gray-700 font-bold text-sm cursor-pointer hover:bg-gray-100"
                       >
                         Code
                       </a>
@@ -84,7 +90,8 @@ const Projects = (): JSX.Element => {
                 </div>
               </div>
             ))}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   )

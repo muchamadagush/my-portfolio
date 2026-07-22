@@ -178,7 +178,7 @@ const Dashboard = (): JSX.Element => {
               <div className="divide-y divide-gray-200">
                 {filteredProjects.length > 0 ? (
                   filteredProjects.map((project) => (
-                    <div key={project._id} className="grid grid-cols-12 px-6 py-4 hover:bg-gray-50 items-center">
+                    <div key={project.id || project._id} className="grid grid-cols-12 px-6 py-4 hover:bg-gray-50 items-center">
                       <div className="col-span-4">
                         <div className="flex items-center">
                           <div className="flex-shrink-0 h-12 w-12">
@@ -197,7 +197,7 @@ const Dashboard = (): JSX.Element => {
                       
                       <div className="col-span-3">
                         <div className="flex flex-wrap gap-1">
-                          {project.technologies.slice(0, 2).map((tech, i) => (
+                          {project.technologies?.slice(0, 2).map((tech: string, i: number) => (
                             <span 
                               key={i}
                               className="px-2 py-1 text-xs bg-blue-50 text-[#5651e5] rounded"
@@ -205,9 +205,9 @@ const Dashboard = (): JSX.Element => {
                               {tech}
                             </span>
                           ))}
-                          {project.technologies.length > 2 && (
+                          {(project.technologies?.length ?? 0) > 2 && (
                             <span className="px-2 py-1 text-xs bg-gray-50 text-gray-500 rounded">
-                              +{project.technologies.length - 2}
+                              +{(project.technologies?.length ?? 0) - 2}
                             </span>
                           )}
                         </div>
@@ -234,7 +234,7 @@ const Dashboard = (): JSX.Element => {
                           Edit
                         </button>
                         <button
-                          onClick={() => handleDelete(project._id)}
+                          onClick={() => handleDelete(project.id || project._id)}
                           className="text-red-600 hover:text-red-800 text-sm font-medium"
                         >
                           Delete

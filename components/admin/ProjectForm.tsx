@@ -69,32 +69,11 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ project, onSuccess, onCancel 
   const uploadFile = async (file: File): Promise<string> => {
     setUploadingImage(true)
     try {
-      // Buat FormData untuk upload file
-      const formData = new FormData()
-      formData.append('file', file)
-      
-      // Debug informasi upload
-      console.log('Uploading file:', file.name, file.type, file.size)
-      
-      // Gunakan fetch API langsung untuk memastikan file terkirim dengan benar
-      const response = await fetch('/api/upload', {
-        method: 'POST',
-        body: formData
-      })
-      
-      if (!response.ok) {
-        const errorData = await response.json()
-        throw new Error(errorData.message || 'Upload failed')
-      }
-      
-      const data = await response.json()
-      console.log('Upload response:', data)
-      
-      if (!data.success) {
-        throw new Error(data.message || 'Failed to upload image')
-      }
-      
-      return data.data.imageUrl
+      console.log('Uploading file to Supabase Storage:', file.name, file.type, file.size)
+      const res = await ApiCall.Upload.create(file)
+      const imageUrl = res.data.data.imageUrl
+      console.log('Uploaded imageUrl:', imageUrl)
+      return imageUrl
     } catch (error) {
       console.error('Upload error:', error)
       toast.error('Image upload failed: ' + (error instanceof Error ? error.message : 'Unknown error'))
@@ -110,25 +89,20 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ project, onSuccess, onCancel 
 
     try {
       let imageUrl = formData.imageUrl
-      console.log('Initial imageUrl:', imageUrl)
 
-      // Upload image if selected
       if (selectedFile) {
-        console.log('Uploading selected file:', selectedFile.name)
         imageUrl = await uploadFile(selectedFile)
-        console.log('Uploaded imageUrl:', imageUrl)
       }
 
       const projectData = {
         ...formData,
-        imageUrl, // Make sure this is being set
+        imageUrl,
         technologies: formData.technologies.split(',').map(tech => tech.trim()).filter(tech => tech)
       }
-      
-      console.log('Submitting project data:', projectData)
 
-      if (project) {
-        await ApiCall.Project.update(project._id, projectData)
+      const projectId = project?.id || project?._id
+      if (projectId) {
+        await ApiCall.Project.update(projectId, projectData)
         toast.success('Project updated successfully!')
       } else {
         await ApiCall.Project.create(projectData)
@@ -138,7 +112,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ project, onSuccess, onCancel 
       onSuccess()
     } catch (error: any) {
       console.error('Project save error:', error)
-      toast.error(error?.response?.data?.message || error.message || 'Failed to save project')
+      toast.error(error?.message || 'Failed to save project')
     } finally {
       setIsLoading(false)
     }

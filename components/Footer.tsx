@@ -40,11 +40,7 @@ const Footer = () => {
                   Projects
                 </Link>
               </li>
-              <li>
-                <Link href="/faq" className="hover:text-[#5651e5] transition-colors duration-300">
-                  FAQ
-                </Link>
-              </li>
+
               <li>
                 <Link href="/privacy-policy" className="hover:text-[#5651e5] transition-colors duration-300">
                   Privacy Policy
